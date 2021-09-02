@@ -1,0 +1,132 @@
+html{
+    font-size: 32px;
+    cursor: default;
+}
+
+#container {
+    display: grid;
+    margin:auto;
+    padding:.5rem;
+    justify-content: center;
+    justify-items:center;
+    width: 12rem;
+    height: 20rem;
+    background-color: grey;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "display display display display"
+    "clear clear delete divide"
+    "c7 c8 c9 multi"
+    "c4 c5 c6 minus"
+    "c1 c2 c3 addition"
+    " . c0 deci equal";
+}
+
+.button {
+    width:2rem;
+    height:2rem;
+    background-color: white;
+    text-align:center;
+    border-radius: 25%;
+    line-height: 2rem;
+    transition: ease-in-out 0.1s;
+}
+.button:hover {
+    
+}
+
+#clear:hover {
+    
+}
+
+#display {
+    grid-area: display;
+    font-size: 1.5rem;
+    text-align: right;
+    line-height: 2rem;
+    margin-top:1rem;
+    width:11rem;
+    height:2rem;
+    background-color: white;
+    overflow: hidden;
+    
+}
+
+#clear {
+    grid-area: clear;
+    background-color: white;
+    width:5rem;
+    height:2rem;
+    border-radius: 1rem;
+    text-align: center;
+    line-height: 2rem;
+    transition: ease-in-out 0.1s;
+}
+
+#c1 {
+    grid-area: c1;
+}
+
+#c2 {
+    grid-area: c2;
+}
+
+#c3 {
+    grid-area: c3;
+}
+
+#c4 {
+    grid-area: c4;
+}
+
+#c5 {
+    grid-area: c5;
+}
+
+#c6 {
+    grid-area: c6;
+}
+
+#c7 {
+    grid-area: c7;
+}
+
+#c8 {
+    grid-area: c8;
+}
+
+#c9 {
+    grid-area: c9;
+}
+
+#c0 {
+    grid-area: c0;
+}
+
+#division {
+    grid-area: divide;
+}
+#delete {
+    grid-area: delete;
+}
+
+#multiplication {
+    grid-area: multi;
+}
+
+#subtraction {
+    grid-area: minus;
+}
+
+#addition {
+    grid-area: addition;
+}
+
+#decimal {
+    grid-area: deci;
+}
+
+#equal {
+    grid-area: equal;
+}
