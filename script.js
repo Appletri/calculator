@@ -9,6 +9,7 @@ const equal =  document.querySelector('#equal');
 const decimal = document.querySelector('#decimal');
 const container = document.querySelector('#conatiner');
 const delBut = document.querySelector('#backspace');
+const totalDisplay = document.querySelector('#total');
 
 let total =  0;
 let firstNum = 0;
@@ -28,12 +29,15 @@ equal.addEventListener('click', equalNum);
 decimal.addEventListener('click', deci);
 delBut.addEventListener('click', del);
 
+document.addEventListener('keypress', applyKey); //keyboard input
+document.addEventListener('keydown', applyKeyDel); 
 num.forEach(number => {
     number.addEventListener('click', applyNum);
+    
 })
 
 
-// Numbers
+// Numbers and Keys
 
 function applyNum(e){
     
@@ -45,8 +49,40 @@ function applyNum(e){
     display.textContent += `${digit}`;
 }
 
+function applyKey(e){
+    
+    if (display.textContent == "0"){
+        display.textContent = "";
+    }
+    
+    if (e.keyCode > 47 && e.keyCode < 58){
+        display.textContent += `${String.fromCharCode(e.keyCode)}`;
+    }
+    else if (e.keyCode == 13 ){
+        equalNum();
+    }
+    else if (e.keyCode == 92 ){
+        divNum();
+    }
+    else if (e.keyCode == 43 ){
+        addNum();
+    }
+    else if (e.keyCode == 45 ){
+        subNum();
+    }
+    else if (e.keyCode == 42 ){
+        mulNum();
+    }
+    else if (e.keyCode == 46 ){
+        deci();
+    }
+}
+
+
 function deci() {
-    display.textContent += "."
+    if (display.textContent.indexOf(`.`) == -1){
+        display.textContent += "." 
+    }  
 }
 
 // Clear
@@ -56,6 +92,7 @@ function clearNum(){
     secondNum = 0;
     operatorState = "";
     currentState = "first number";
+
 }
 
 // Delete
@@ -71,6 +108,16 @@ function del() {
         display.textContent = str.substring(0, str.length - 1);
     }
 
+}
+
+function applyKeyDel(e){
+    if (display.textContent == "0"){
+        display.textContent = "";
+    }
+
+    if (e.keyCode == 8) {
+        del();
+    }
 }
 
 // Addition
@@ -121,24 +168,23 @@ function equalNum(){
         total = firstNum / secondNum;   
     }
     display.textContent = total;
-    console.log (firstNum);
-
+    totalDisplay.textContent = `=${total}`;
     firstNum = parseFloat(display.textContent);
     notation();
-    
-    console.log (secondNum);
-    console.log (total);
     equalState = false;
     currentState = 'first number';
+    
     }
 }
 
 
 // necessary functions
 function preOperate () {
+    console.log (currentState);
     if (currentState == "first number"){
         firstNum = parseFloat(display.textContent);
-        currentState = "next number"        
+        currentState = "next number";
+                
     }
     else {
         secondNum = parseFloat(display.textContent);
@@ -158,10 +204,12 @@ function preOperate () {
         }
         firstNum = total;
     }
-    /// above code makes operators progressive    
     
+    /// above code makes operators progressive    
+    totalDisplay.textContent = `=${total}`;
     display.textContent = 0;
     equalState = true; // makes equal button non progressive
+    console.log (currentState);
     console.log (firstNum);
     console.log (secondNum);
     console.log (`= ${total}`);
@@ -171,4 +219,13 @@ function notation () {
     if (display.textContent.length > 11) {
         display.textContent = parseFloat(display.textContent).toExponential(4);
     }
+    else if (display.textContent == Infinity || display.textContent == "NaN") {
+        display.textContent = "Ouch";
+        totalDisplay.textContent = "=(";
+    }
+
+    if (totalDisplay.textContent.length > 11) {
+        totalDisplay.textContent = parseFloat(display.textContent).toExponential(4);
+    }
 }
+
