@@ -31,6 +31,7 @@ delBut.addEventListener('click', del);
 
 document.addEventListener('keypress', applyKey); //keyboard input
 document.addEventListener('keydown', applyKeyDel); 
+
 num.forEach(number => {
     number.addEventListener('click', applyNum);
     
@@ -76,6 +77,7 @@ function applyKey(e){
     else if (e.keyCode == 46 ){
         deci();
     }
+  
 }
 
 
