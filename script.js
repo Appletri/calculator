@@ -122,6 +122,11 @@ function applyKeyDel(e){
 
 // Addition
 function addNum(){
+    if (display.textContent == "0"){
+        operatorState = "add";
+        return;
+    }
+
     preOperate();
     operatorState = "add";
                   
@@ -129,6 +134,13 @@ function addNum(){
 
 // Subtraction
 function subNum(){
+    if (display.textContent == "0"){
+        display.textContent = "-";
+        return;
+    }
+    else if (display.textContent == "-"){
+        return;
+    }
     preOperate();
     operatorState = "subtract";
     
@@ -136,6 +148,11 @@ function subNum(){
 
 // Multiplication
 function mulNum(){
+    if (display.textContent == "0"){
+        operatorState = "multiply";
+        return;
+    }
+
     preOperate();
     operatorState = "multiply";
     
@@ -143,6 +160,11 @@ function mulNum(){
 
 // Division
 function divNum(){
+    if (display.textContent == "0"){
+        operatorState = "divide";
+        return;
+    }
+
     preOperate();
     operatorState = "divide";
     
@@ -206,6 +228,7 @@ function preOperate () {
     }
     
     /// above code makes operators progressive    
+    
     totalDisplay.textContent = `=${total}`;
     display.textContent = 0;
     equalState = true; // makes equal button non progressive

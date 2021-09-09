@@ -14,7 +14,7 @@ html{
     justify-items:center;
     width: 12rem;
     height: 20rem;
-    background-color: grey;
+    background: linear-gradient(135deg, rgb(168, 168, 168), gray);
     border-radius: 25px;
     box-shadow: 7px 7px 0px black, 4px 4px 0px black, 7px 7px 15px black;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
@@ -61,7 +61,7 @@ html{
     border:2px solid white;
     box-shadow: inset 0px 0px 10px white, 0px 0px 10px lightblue;
     overflow: hidden;
-    user-select:all;    
+    user-select:contain;    
 }
 #total {
     font-size: .55rem;
