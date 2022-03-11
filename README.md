@@ -7,4 +7,5 @@
 - [Link to the Assignment](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator)
 
 ## About
-A calculator that does basic arithmetic. It has keyboard support for inputing numbers.
+A calculator made for the Odin project. 
+It has keyboard support for inputing numbers.
